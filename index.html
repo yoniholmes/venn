@@ -33,40 +33,48 @@
 <p>Compatible with AMD and node.</p>
 
 <h3>
-<a name="simple" class="anchor" href="#simple"><span class="octicon octicon-link"></span></a>Simple</h3>
+<a name="getting-started" class="anchor" href="#getting-started"><span class="octicon octicon-link"></span></a>getting started</h3>
 
-<p>A venn set is just an array with some added features:</p>
+<p>A venn set is just an array on steroids:</p>
 
 <div class="highlight highlight-javascript"><pre>
   <span class="kd">var</span> <span class="nx">venn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"venn"</span><span class="p">)</span>
-  <span class="nx">venn</span><span class="p">.</span><span class="nx">create</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span> <span class="c1">// returns [1,2]</span>
+  <span class="nx">venn</span><span class="p">.</span><span class="nx">create</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>   
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">venn</span><span class="p">)</span> <span class="c1">// [1,2]</span>
+
 </pre></div>
+
+<h3>
+<a name="union" class="anchor" href="#union"><span class="octicon octicon-link"></span></a>union</h3>
 
 <p>You can now chain operations to this set, like an union:</p>
 
 <div class="highlight highlight-javascript"><pre>  <span class="nx">venn</span><span class="p">.</span><span class="nx">create</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
-      <span class="p">.</span><span class="nx">union</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span> <span class="c1">// returns [1,2,3,4]  </span>
-</pre></div>
-
-<p>Or an intersection:</p>
-
-<div class="highlight highlight-javascript"><pre>    <span class="nx">venn</span><span class="p">.</span><span class="nx">create</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
-      <span class="p">.</span><span class="nx">union</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span> 
-      <span class="p">.</span><span class="nx">intersection</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span> <span class="c1">// returns [1]</span>
-</pre></div>
-
-<p>Or a mix of everything</p>
-
-<div class="highlight highlight-javascript"><pre>    <span class="nx">venn</span><span class="p">.</span><span class="nx">create</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
-      <span class="p">.</span><span class="nx">union</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span> 
-      <span class="p">.</span><span class="nx">intersection</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
-      <span class="p">.</span><span class="nx">union</span><span class="p">([</span><span class="mi">2</span><span class="p">])</span> <span class="c1">// returns [1,5,2]      </span>
+      <span class="p">.</span><span class="nx">union</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+      <span class="p">.</span><span class="nx">union</span><span class="p">([</span><span class="mi">5</span><span class="p">])</span> <span class="c1">// [1,2,3,4,5]  </span>
 </pre></div>
 
 <h3>
-<a name="still-simple" class="anchor" href="#still-simple"><span class="octicon octicon-link"></span></a>Still simple:</h3>
+<a name="intersection" class="anchor" href="#intersection"><span class="octicon octicon-link"></span></a>intersection</h3>
 
-<p>You can also use objects, without a custom hash/key function</p>
+<div class="highlight highlight-javascript"><pre>    <span class="nx">venn</span><span class="p">.</span><span class="nx">create</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+      <span class="p">.</span><span class="nx">union</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span> 
+      <span class="p">.</span><span class="nx">intersection</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span> <span class="c1">// [1]</span>
+</pre></div>
+
+<h3>
+<a name="chaining-everything" class="anchor" href="#chaining-everything"><span class="octicon octicon-link"></span></a>chaining everything</h3>
+
+<div class="highlight highlight-javascript"><pre>    <span class="nx">venn</span><span class="p">.</span><span class="nx">create</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+      <span class="p">.</span><span class="nx">union</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span> 
+      <span class="p">.</span><span class="nx">intersection</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+      <span class="p">.</span><span class="nx">union</span><span class="p">([</span><span class="mi">2</span><span class="p">])</span> <span class="c1">// [1,5,2]      </span>
+</pre></div>
+
+<h3>
+<a name="objects" class="anchor" href="#objects"><span class="octicon octicon-link"></span></a>Objects</h3>
+
+<p>If you're crazy you can use venn without a key function. We'll just figure it out how to index the objects.</p>
 
 <div class="highlight highlight-javascript"><pre>    <span class="nx">venn</span><span class="p">.</span><span class="nx">create</span><span class="p">([</span>
         <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">"vitor"</span><span class="p">,</span> <span class="nx">age</span><span class="o">:</span> <span class="s2">"23"</span><span class="p">}</span>
@@ -80,10 +88,13 @@
         <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">"khov"</span><span class="p">,</span> <span class="nx">age</span> <span class="o">:</span> <span class="s2">"10"</span><span class="p">}</span>
       <span class="p">,</span> <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">"nuno"</span><span class="p">,</span> <span class="nx">age</span> <span class="o">:</span> <span class="s2">"20"</span><span class="p">}])</span> 
 
-    <span class="c1">// returns vitor, khov and nuno</span>
+    <span class="c1">// vitor, khov and nuno</span>
 </pre></div>
 
-<p>But if you want performance, write your own key function</p>
+<h3>
+<a name="key-function" class="anchor" href="#key-function"><span class="octicon octicon-link"></span></a>Key function</h3>
+
+<p>But really, write your own key function:</p>
 
 <div class="highlight highlight-javascript"><pre>
     <span class="kd">var</span> <span class="nx">myKeyFunction</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="p">{</span>
@@ -94,13 +105,13 @@
         <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">"vitor"</span><span class="p">,</span> <span class="nx">age</span><span class="o">:</span> <span class="s2">"100"</span><span class="p">}</span>
       <span class="p">,</span> <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">"khov"</span><span class="p">,</span>  <span class="nx">age</span><span class="o">:</span> <span class="s2">"100"</span><span class="p">}],</span> <span class="nx">myKeyFunction</span><span class="p">)</span>
       <span class="p">.</span><span class="nx">intersection</span><span class="p">([</span>
-        <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">"vitor"</span><span class="p">,</span>  <span class="nx">age</span><span class="o">:</span> <span class="s2">"0"</span><span class="p">}</span>
-      <span class="p">,</span> <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">"khov"</span><span class="p">,</span>   <span class="nx">age</span><span class="o">:</span> <span class="s2">"0"</span><span class="p">}</span>
+        <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">"vitor"</span><span class="p">,</span> <span class="nx">age</span><span class="o">:</span> <span class="s2">"0"</span><span class="p">}</span>
+      <span class="p">,</span> <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">"khov"</span><span class="p">,</span>  <span class="nx">age</span><span class="o">:</span> <span class="s2">"0"</span><span class="p">}</span>
       <span class="p">.</span><span class="nx">union</span><span class="p">([</span>
-        <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">"khov"</span><span class="p">,</span> <span class="nx">age</span> <span class="o">:</span> <span class="s2">"-100"</span><span class="p">}</span>
-      <span class="p">,</span> <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">"nuno"</span><span class="p">,</span> <span class="nx">age</span> <span class="o">:</span> <span class="s2">"20"</span><span class="p">}])</span> 
+        <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">"khov"</span><span class="p">,</span>  <span class="nx">age</span> <span class="o">:</span> <span class="s2">"-100"</span><span class="p">}</span>
+      <span class="p">,</span> <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">"nuno"</span><span class="p">,</span>  <span class="nx">age</span> <span class="o">:</span> <span class="s2">"20"</span><span class="p">}])</span> 
 
-    <span class="c1">// returns vitor, khov(the first of them) and nuno</span>
+    <span class="c1">// vitor, khov(the first of them), nuno</span>
 </pre></div>
 
 <h3>
