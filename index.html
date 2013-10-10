@@ -1,0 +1,122 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>venn by bitoiu</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>venn</h1>
+        <p>Fluent API for set operations.</p>
+
+        <p class="view"><a href="https://github.com/bitoiu/venn">View the Project on GitHub <small>bitoiu/venn</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/bitoiu/venn/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/bitoiu/venn/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/bitoiu/venn">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <p>One of these days I was looking for a library that would allow me to do simple set operations, mostly intersection and unions. There's so many that do it, like underscore, the problem I found was that none of them had a fluent API, so I took a take on doing my own.</p>
+
+<p>Compatible with AMD and node.</p>
+
+<h3>
+<a name="simple" class="anchor" href="#simple"><span class="octicon octicon-link"></span></a>Simple</h3>
+
+<p>A venn set is just an array with some added features:</p>
+
+<div class="highlight highlight-javascript"><pre>
+  <span class="kd">var</span> <span class="nx">venn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"venn"</span><span class="p">)</span>
+  <span class="nx">venn</span><span class="p">.</span><span class="nx">create</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span> <span class="c1">// returns [1,2]</span>
+</pre></div>
+
+<p>You can now chain operations to this set, like an union:</p>
+
+<div class="highlight highlight-javascript"><pre>  <span class="nx">venn</span><span class="p">.</span><span class="nx">create</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+      <span class="p">.</span><span class="nx">union</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span> <span class="c1">// returns [1,2,3,4]  </span>
+</pre></div>
+
+<p>Or an intersection:</p>
+
+<div class="highlight highlight-javascript"><pre>    <span class="nx">venn</span><span class="p">.</span><span class="nx">create</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+      <span class="p">.</span><span class="nx">union</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span> 
+      <span class="p">.</span><span class="nx">intersection</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span> <span class="c1">// returns [1]</span>
+</pre></div>
+
+<p>Or a mix of everything</p>
+
+<div class="highlight highlight-javascript"><pre>    <span class="nx">venn</span><span class="p">.</span><span class="nx">create</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+      <span class="p">.</span><span class="nx">union</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span> 
+      <span class="p">.</span><span class="nx">intersection</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+      <span class="p">.</span><span class="nx">union</span><span class="p">([</span><span class="mi">2</span><span class="p">])</span> <span class="c1">// returns [1,5,2]      </span>
+</pre></div>
+
+<h3>
+<a name="still-simple" class="anchor" href="#still-simple"><span class="octicon octicon-link"></span></a>Still simple:</h3>
+
+<p>You can also use objects, without a custom hash/key function</p>
+
+<div class="highlight highlight-javascript"><pre>    <span class="nx">venn</span><span class="p">.</span><span class="nx">create</span><span class="p">([</span>
+        <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">"vitor"</span><span class="p">,</span> <span class="nx">age</span><span class="o">:</span> <span class="s2">"23"</span><span class="p">}</span>
+      <span class="p">,</span> <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">"khov"</span><span class="p">,</span>  <span class="nx">age</span><span class="o">:</span> <span class="s2">"24"</span><span class="p">}</span>
+      <span class="p">,</span> <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">"pat"</span><span class="p">,</span>   <span class="nx">age</span><span class="o">:</span> <span class="s2">"30"</span><span class="p">}])</span>
+      <span class="p">.</span><span class="nx">intersection</span><span class="p">([</span>
+        <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">"vitor"</span><span class="p">,</span>  <span class="nx">age</span><span class="o">:</span> <span class="s2">"23"</span><span class="p">}</span>
+      <span class="p">,</span> <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">"newguy"</span><span class="p">,</span> <span class="nx">age</span><span class="o">:</span> <span class="s2">"0"</span><span class="p">}</span>
+      <span class="p">,</span> <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">"pat"</span><span class="p">,</span>    <span class="nx">age</span><span class="o">:</span> <span class="s2">"50"</span><span class="p">}])</span>
+      <span class="p">.</span><span class="nx">union</span><span class="p">([</span>
+        <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">"khov"</span><span class="p">,</span> <span class="nx">age</span> <span class="o">:</span> <span class="s2">"10"</span><span class="p">}</span>
+      <span class="p">,</span> <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">"nuno"</span><span class="p">,</span> <span class="nx">age</span> <span class="o">:</span> <span class="s2">"20"</span><span class="p">}])</span> 
+
+    <span class="c1">// returns vitor, khov and nuno</span>
+</pre></div>
+
+<p>But if you want performance, write your own key function</p>
+
+<div class="highlight highlight-javascript"><pre>
+    <span class="kd">var</span> <span class="nx">myKeyFunction</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">item</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="nx">item</span><span class="p">.</span><span class="nx">name</span>
+    <span class="p">}</span>
+
+    <span class="nx">venn</span><span class="p">.</span><span class="nx">create</span><span class="p">([</span>
+        <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">"vitor"</span><span class="p">,</span> <span class="nx">age</span><span class="o">:</span> <span class="s2">"100"</span><span class="p">}</span>
+      <span class="p">,</span> <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">"khov"</span><span class="p">,</span>  <span class="nx">age</span><span class="o">:</span> <span class="s2">"100"</span><span class="p">}],</span> <span class="nx">myKeyFunction</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">intersection</span><span class="p">([</span>
+        <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">"vitor"</span><span class="p">,</span>  <span class="nx">age</span><span class="o">:</span> <span class="s2">"0"</span><span class="p">}</span>
+      <span class="p">,</span> <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">"khov"</span><span class="p">,</span>   <span class="nx">age</span><span class="o">:</span> <span class="s2">"0"</span><span class="p">}</span>
+      <span class="p">.</span><span class="nx">union</span><span class="p">([</span>
+        <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">"khov"</span><span class="p">,</span> <span class="nx">age</span> <span class="o">:</span> <span class="s2">"-100"</span><span class="p">}</span>
+      <span class="p">,</span> <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">"nuno"</span><span class="p">,</span> <span class="nx">age</span> <span class="o">:</span> <span class="s2">"20"</span><span class="p">}])</span> 
+
+    <span class="c1">// returns vitor, khov(the first of them) and nuno</span>
+</pre></div>
+
+<h3>
+<a name="some-notes" class="anchor" href="#some-notes"><span class="octicon octicon-link"></span></a>Some notes</h3>
+
+<ul>
+<li>The keyFunction only needs to be set once for each venn object (as you would expect)</li>
+<li>Don't forget if you apply a built-in array function like <code>filter</code> or <code>map</code> the returning object is not a venn object (as you would once again expect)</li>
+</ul><p>Let me know if there are improvements I can do to the library. I might take some time to implement the other less used set operations.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/bitoiu">bitoiu</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
