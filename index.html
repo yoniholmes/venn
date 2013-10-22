@@ -47,12 +47,14 @@
 <h3>
 <a name="union" class="anchor" href="#union"><span class="octicon octicon-link"></span></a>union</h3>
 
-<p>You can now chain operations to this set, like an union:</p>
+<p>You can now chain operations to this set, using <code>union</code> or <code>or</code>:</p>
 
 <div class="highlight highlight-javascript"><pre>  <span class="nx">venn</span><span class="p">.</span><span class="nx">create</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
       <span class="p">.</span><span class="nx">union</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
-      <span class="p">.</span><span class="nx">union</span><span class="p">([</span><span class="mi">5</span><span class="p">])</span> <span class="c1">// [1,2,3,4,5]  </span>
+      <span class="p">.</span><span class="nx">or</span><span class="p">([</span><span class="mi">5</span><span class="p">])</span> <span class="c1">// [1,2,3,4,5]</span>
 </pre></div>
+
+<p><code>union</code> and <code>or</code> are just alias for the same operation.</p>
 
 <h3>
 <a name="intersection" class="anchor" href="#intersection"><span class="octicon octicon-link"></span></a>intersection</h3>
@@ -62,13 +64,17 @@
       <span class="p">.</span><span class="nx">intersection</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span> <span class="c1">// [1]</span>
 </pre></div>
 
+<p>if you prefer you can also use <code>and</code> instead of <code>intersection</code></p>
+
 <h3>
 <a name="chaining-everything" class="anchor" href="#chaining-everything"><span class="octicon octicon-link"></span></a>chaining everything</h3>
 
+<p>Or a mix of everything</p>
+
 <div class="highlight highlight-javascript"><pre>    <span class="nx">venn</span><span class="p">.</span><span class="nx">create</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
-      <span class="p">.</span><span class="nx">union</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span> 
-      <span class="p">.</span><span class="nx">intersection</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
-      <span class="p">.</span><span class="nx">union</span><span class="p">([</span><span class="mi">2</span><span class="p">])</span> <span class="c1">// [1,5,2]      </span>
+      <span class="p">.</span><span class="nx">or</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+      <span class="p">.</span><span class="nx">and</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+      <span class="p">.</span><span class="nx">or</span><span class="p">([</span><span class="mi">2</span><span class="p">])</span> <span class="c1">// [1,5,2]</span>
 </pre></div>
 
 <h3>
@@ -104,10 +110,10 @@
     <span class="nx">venn</span><span class="p">.</span><span class="nx">create</span><span class="p">([</span>
         <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">"vitor"</span><span class="p">,</span> <span class="nx">age</span><span class="o">:</span> <span class="s2">"100"</span><span class="p">}</span>
       <span class="p">,</span> <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">"khov"</span><span class="p">,</span>  <span class="nx">age</span><span class="o">:</span> <span class="s2">"100"</span><span class="p">}],</span> <span class="nx">myKeyFunction</span><span class="p">)</span>
-      <span class="p">.</span><span class="nx">intersection</span><span class="p">([</span>
+      <span class="p">.</span><span class="nx">and</span><span class="p">([</span>
         <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">"vitor"</span><span class="p">,</span> <span class="nx">age</span><span class="o">:</span> <span class="s2">"0"</span><span class="p">}</span>
       <span class="p">,</span> <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">"khov"</span><span class="p">,</span>  <span class="nx">age</span><span class="o">:</span> <span class="s2">"0"</span><span class="p">}</span>
-      <span class="p">.</span><span class="nx">union</span><span class="p">([</span>
+      <span class="p">.</span><span class="nx">or</span><span class="p">([</span>
         <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">"khov"</span><span class="p">,</span>  <span class="nx">age</span> <span class="o">:</span> <span class="s2">"-100"</span><span class="p">}</span>
       <span class="p">,</span> <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s2">"nuno"</span><span class="p">,</span>  <span class="nx">age</span> <span class="o">:</span> <span class="s2">"20"</span><span class="p">}])</span> 
 
@@ -118,7 +124,7 @@
 <a name="some-notes" class="anchor" href="#some-notes"><span class="octicon octicon-link"></span></a>Some notes</h3>
 
 <ul>
-<li>The keyFunction only needs to be set once for each venn object (as you would expect)</li>
+<li>The <code>keyFunction</code> only needs to be set once for each venn object (as you would expect)</li>
 <li>Don't forget if you apply a built-in array function like <code>filter</code> or <code>map</code> the returning object is not a venn object (as you would once again expect)</li>
 </ul><p>Let me know if there are improvements I can do to the library. I might take some time to implement the other less used set operations.</p>
       </section>
