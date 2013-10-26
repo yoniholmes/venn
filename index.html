@@ -67,6 +67,16 @@
 <p>if you prefer you can also use <code>and</code> instead of <code>intersection</code></p>
 
 <h3>
+<a name="not" class="anchor" href="#not"><span class="octicon octicon-link"></span></a>not</h3>
+
+<p>If you want to be negative about it, you can check out <code>not</code></p>
+
+<div class="highlight highlight-javascript"><pre>    <span class="nx">venn</span><span class="p">.</span><span class="nx">create</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">])</span>
+      <span class="p">.</span><span class="nx">not</span><span class="p">([</span><span class="mi">4</span><span class="p">])</span>
+      <span class="p">.</span><span class="nx">not</span><span class="p">([</span><span class="mi">5</span><span class="p">])</span> <span class="c1">// [1,2,3]</span>
+</pre></div>
+
+<h3>
 <a name="chaining-everything" class="anchor" href="#chaining-everything"><span class="octicon octicon-link"></span></a>chaining everything</h3>
 
 <p>Or a mix of everything</p>
@@ -78,7 +88,7 @@
 </pre></div>
 
 <h3>
-<a name="objects" class="anchor" href="#objects"><span class="octicon octicon-link"></span></a>Objects</h3>
+<a name="objects" class="anchor" href="#objects"><span class="octicon octicon-link"></span></a>objects</h3>
 
 <p>If you're crazy you can use venn without a key function. We'll just figure it out how to index the objects.</p>
 
@@ -98,7 +108,7 @@
 </pre></div>
 
 <h3>
-<a name="key-function" class="anchor" href="#key-function"><span class="octicon octicon-link"></span></a>Key function</h3>
+<a name="key-function" class="anchor" href="#key-function"><span class="octicon octicon-link"></span></a>key function</h3>
 
 <p>But really, write your own key function:</p>
 
@@ -121,7 +131,7 @@
 </pre></div>
 
 <h3>
-<a name="some-notes" class="anchor" href="#some-notes"><span class="octicon octicon-link"></span></a>Some notes</h3>
+<a name="notes" class="anchor" href="#notes"><span class="octicon octicon-link"></span></a>notes</h3>
 
 <ul>
 <li>The <code>keyFunction</code> only needs to be set once for each venn object (as you would expect)</li>
